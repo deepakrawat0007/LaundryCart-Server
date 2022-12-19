@@ -1,0 +1,19 @@
+{
+  "name": "laundrycart-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/beincharacter/LaundryCart-Server.git"
+  },
+  "author": "Shubham/Vimal/Deepak",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/beincharacter/LaundryCart-Server/issues"
+  },
+  "homepage": "https://github.com/beincharacter/LaundryCart-Server#readme"
+}
