@@ -1,7 +1,5 @@
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
-dotenv.config();
-
 const port = process.env.PORT || 5000;
 const API = process.env.DATABASE_URL || "mongodb+srv://root:root123@cluster0.hzhvoqr.mongodb.net/LaundryCart?retryWrites=true&w=majority"
 

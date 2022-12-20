@@ -9,7 +9,7 @@ const orderSchema = new mongoose.Schema({
 	})
 
 const ordersSchema = new mongoose.Schema({
-    user:{type: mongoose.Types.ObjectId, ref:"users"},
+    user:{type: mongoose.Types.ObjectId,ref:"users"},
     orders: [orderSchema],
     total_price : {type : Number , required : true},
 	status : {type : String , required : true},

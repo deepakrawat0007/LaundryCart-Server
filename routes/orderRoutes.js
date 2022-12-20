@@ -1,15 +1,18 @@
 const router = require("express").Router();
-const mongoose = require("mongoose");
+// const mongoose = require("mongoose");
 const ordersModel = require("../models/orderSchema");
 const ProductModel = require("../models/productSchema");
 
 
 router.post("/createorder",async(req,res)=>{
-    console.log(req.user);
+    // console.log(req.user);
 
     try{
-        const data = await ordersModel.create({user:req.user, ...req.body});
-        res.status(201).json(data);
+    await ordersModel.create({user:req.user, ...req.body});
+        res.status(201).json({
+            status : "success",
+            message: "data added"
+        });
     }
     catch(e){
         res.status(406).json({
