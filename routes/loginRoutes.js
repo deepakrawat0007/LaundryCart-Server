@@ -12,16 +12,14 @@ router.post('/login'
 
             //check user exists or not?
             const isUser = isNaN(Number(username))
-              ? await User.findOne({ email: username })
-              : await User.findOne({ phone: username });
+                ? await User.findOne({ email: username })
+                : await User.findOne({ phone: username });
             if (!isUser) {
-                return res.status(400).json({
-                    "Message": "No User Exists With given Mail-id / Phone Number"
-                })
+                return res.status(400).send("No User Exists With given Email / Phone Number")
             } else {
                 bcrypt.compare(req.body.password, isUser.password, function (err, result) { // comparing password
                     if (err) {
-                        return res.status(400).json({
+                        return res.status(401).json({
                             "Message": err.message
                         })
                     }
@@ -34,13 +32,11 @@ router.post('/login'
                         return res.status(200).json({
                             "Message": `Logged In SuccessFully Welcome ${isUser.name}`,
                             "Name": isUser.name,
-                            "Address":isUser.address,
+                            "Address": isUser.address,
                             "Token": token
                         })
                     } else {
-                        return res.status(400).json({
-                            "Message": "Invalid Credentials"
-                        })
+                        return res.status(401).send("Invalid Credentials")
                     }
 
                 })
