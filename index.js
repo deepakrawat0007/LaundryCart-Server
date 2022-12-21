@@ -7,7 +7,7 @@ const API = process.env.DATABASE_URL || "mongodb+srv://root:root123@cluster0.hzh
 mongoose.set('strictQuery', false);
 
 const app = require('./app');
-
+dotenv.config();
 
 async function main() {
     await mongoose.connect(API);
