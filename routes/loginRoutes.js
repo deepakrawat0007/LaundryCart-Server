@@ -52,4 +52,45 @@ router.post('/login'
         }
     })
 
+router.put('/forgotpassword', async (req,res)=>{
+    try{
+        const {username , password} = req.body;
+        const isUser = isNaN(Number(username))
+        ? await User.findOne({ email: username })
+        : await User.findOne({ phone: username });
+
+        if(!isUser){
+            return res.status(400).send("No User Exists With given Email / Phone Number")
+        }else{
+            bcrypt.hash(password, 10, async function (err, hash) {
+                const map = {password:hash}
+                if (err) {
+                    return res.status(400).json({
+                        "Error": err.message
+                    })
+                } else {
+                    const updateData = await User.findByIdAndUpdate(isUser._id,map,
+                        {
+                        new: true,
+                        useFindAndModity: false
+                      })
+                      res.status(200).json({
+                        message: "Password Updated",
+                        "User": updateData
+                      })
+                  
+
+
+                }
+            })
+
+
+        }
+
+
+    }catch(e){
+        res.status(400).send(e.message)
+    }
+} )
+
 module.exports = router;
