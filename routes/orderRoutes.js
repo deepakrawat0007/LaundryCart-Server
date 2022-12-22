@@ -34,8 +34,21 @@ router.get("/product",async(req,res)=>{
             status:"Failed",
             message:e.message,
         })
+    }
+});
 
+router.get("/prevorder", async (req, res) => {
+    // console.log(req)
+    try {
+        const orders = await ordersModel.find({user: req.user})
+        res.status(200).json({
+            status: "sucess",
+            orders: orders
+        })
+    } catch (e) {
+        res.status(400).send("Failed")
     }
 })
+
 
 module.exports = router;
