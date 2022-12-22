@@ -19,7 +19,8 @@ app.use(bodyparser.urlencoded({ extended: false }));
 
 app.use('/' ,RegistrationRoute)
 app.use('/',LoginRoute)
-app.use("/",Authentication,orderRoutes)
+app.use("/",Authentication,orderRoutes);
+// app.use("/",orderRoutes);
 
 
 app.get('/',(req,res)=>{
