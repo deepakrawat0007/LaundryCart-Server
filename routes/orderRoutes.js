@@ -40,7 +40,7 @@ router.get("/product",async(req,res)=>{
 router.get("/prevorder", async (req, res) => {
     // console.log(req)
     try {
-        const orders = await ordersModel.find({user: req.user})
+        const orders = await ordersModel.find({user: req.user}).sort({_id:-1})
         res.status(200).json({
             status: "sucess",
             orders: orders
