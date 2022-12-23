@@ -53,7 +53,7 @@ router.get("/prevorder", async (req, res) => {
 
 router.put("/updateorder/:id", async (req, res) => {
     try{
-        await ordersModel.findByIdAndUpdate({_id : req.params.id}, { $set:{'status': "canceled"}});
+        await ordersModel.findByIdAndUpdate({_id : req.params.id}, { $set:{'status': "cancelled"}});
         res.status(200).send("Updated")
     } catch(e) {
         res.status(401).send(e.message)
